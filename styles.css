@@ -70,3 +70,15 @@ h1 {
 .divide-btn {
   background-color: aqua;
 }
+
+.error-msg {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 36px;
+  color: rgb(255, 0, 0);
+  font-weight: 600;
+}
+
+.hidden {
+  display: none;
+}
