@@ -32,6 +32,7 @@ h1 {
   align-items: center;
   margin: 0 auto;
   font-size: 48px;
+  overflow: hidden;
 }
 
 .calculator {
@@ -59,15 +60,12 @@ h1 {
   cursor: pointer;
 }
 
-.equals-btn,
+.btn-equals,
 .clear-btn {
   background-color: orange;
 }
 
-.multiply-btn,
-.minus-btn,
-.plus-btn,
-.divide-btn {
+.btn-operator {
   background-color: aqua;
 }
 
