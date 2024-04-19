@@ -10,7 +10,13 @@
     <div class="positioner">
       <h1>Calculator Project</h1>
       <div class="calculator">
-        <div class="result"></div>
+        <input
+          type="text"
+          class="result"
+          minlength="1"
+          max-length="9"
+          readonly
+        />
 
         <div class="row">
           <button class="btn btn-number" value="0">0</button>
@@ -37,7 +43,7 @@
           <button class="btn btn-number" value="1">1</button>
           <button class="btn btn-number" value="2">2</button>
           <button class="btn btn-number" value="3">3</button>
-          <button class="btn btn-operator" value="*">*</button>
+          <button class="btn btn-operator" value="*">&times;</button>
         </div>
       </div>
       <p class="error-msg"></p>
