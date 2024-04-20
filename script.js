@@ -7,7 +7,6 @@ const equalsButton = document.querySelector(".btn-equals");
 let firstNum = "";
 let secondNum = "";
 let operator = "";
-result.value = 0;
 
 const addNumbers = (a, b) => a + b;
 const subtractNumbers = (a, b) => a - b;
@@ -24,9 +23,18 @@ const operate = (num1, operator, num2) => {
       : divideNumbers(num1, num2);
 };
 
+const isDecimal = (num) => {
+  const result = num - Math.floor(num) !== 0;
+  if (result) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 numberButtons.forEach((numberButton) => {
   numberButton.addEventListener("click", () => {
-    if (operator === "") {
+    if (!operator) {
       firstNum += numberButton.value;
       result.value = firstNum;
     } else {
@@ -56,9 +64,18 @@ equalsButton.addEventListener("click", () => {
     case "*":
       result.value = operate(parseInt(firstNum), operator, parseInt(secondNum));
       break;
-
     case "/":
-      result.value = operate(parseInt(firstNum), operator, parseInt(secondNum));
+      const calculation = operate(
+        parseInt(firstNum),
+        operator,
+        parseInt(secondNum)
+      );
+
+      if (isDecimal(calculation)) {
+        result.value = calculation.toFixed(3);
+      } else {
+        result.value = calculation;
+      }
       break;
     default:
       break;
@@ -66,6 +83,9 @@ equalsButton.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => {
-  result.innerHTML = "";
-  location.reload();
+  result.value = 0;
+  firstNum = "";
+  secondNum = "";
+  operator = "";
+  errorMessage.textContent = "";
 });
