@@ -26,11 +26,9 @@ const operate = (num1, operator, num2) => {
 
 numberButtons.forEach((numberButton) => {
   numberButton.addEventListener("click", () => {
-    // if there is no operator that means that i'm saving first number
     if (operator === "") {
       firstNum += numberButton.value;
       result.value = firstNum;
-      // else i'm saving second number because if there is an operator it means that i have to operate on these two numbers
     } else {
       secondNum += numberButton.value;
       result.value = secondNum;
@@ -43,26 +41,28 @@ operatorButtons.forEach((operatorButton) => {
     if (e.target.value !== equalsButton.value) {
       operator = e.target.value;
       result.value = operator;
-    } else {
-      switch (operator) {
-        case "+":
-          result.value = operate(firstNum, operator, secondNum);
-          break;
-        case "-":
-          console.log(operate(firstNum, "-", secondNum));
-          break;
-        case "*":
-          console.log(operate(firstNum, "*", secondNum));
-          break;
-
-        case "/":
-          console.log(operate(firstNum, "/", secondNum));
-          break;
-        default:
-          break;
-      }
     }
   });
+});
+
+equalsButton.addEventListener("click", () => {
+  switch (operator) {
+    case "+":
+      result.value = operate(parseInt(firstNum), operator, parseInt(secondNum));
+      break;
+    case "-":
+      result.value = operate(parseInt(firstNum), operator, parseInt(secondNum));
+      break;
+    case "*":
+      result.value = operate(parseInt(firstNum), operator, parseInt(secondNum));
+      break;
+
+    case "/":
+      result.value = operate(parseInt(firstNum), operator, parseInt(secondNum));
+      break;
+    default:
+      break;
+  }
 });
 
 clearButton.addEventListener("click", () => {
